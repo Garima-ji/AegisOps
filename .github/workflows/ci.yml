@@ -81,6 +81,13 @@ jobs:
         run: |
           python scripts/run_scenario.py --scenario high_latency --mode live-sim
 
+      - name: Run Phase 7 Release Benchmark Gate
+        env:
+          ENVIRONMENT: test
+          DATABASE_URL: postgresql+psycopg://postgres:postgres@localhost:5432/aegisops_test
+        run: |
+          python scripts/run_release_benchmark.py --mode fixture
+
   container-build:
     name: Container Build & Health Validation
     runs-on: ubuntu-latest
