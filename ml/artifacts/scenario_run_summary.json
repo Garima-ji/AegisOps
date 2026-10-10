@@ -1,0 +1,166 @@
+{
+  "scenario_type": "high_latency",
+  "target_service": "payment-service",
+  "mode": "live-sim",
+  "experiment_id": "exp-1791638100",
+  "duration_seconds": 0.567,
+  "cleanup_success": true,
+  "overall_status": "SUCCESS",
+  "stages": [
+    {
+      "stage": "1_readiness_check",
+      "status": "passed",
+      "timestamp": "2026-10-10T13:15:00.794246+00:00",
+      "details": {
+        "database_connected": false,
+        "mode": "live-sim"
+      }
+    },
+    {
+      "stage": "2_fault_injection_active",
+      "status": "passed",
+      "timestamp": "2026-10-10T13:15:00.928514+00:00",
+      "details": {
+        "experiment_id": "exp-1791638100",
+        "target": "payment-service"
+      }
+    },
+    {
+      "stage": "3_telemetry_ingested",
+      "status": "passed",
+      "timestamp": "2026-10-10T13:15:00.980989+00:00",
+      "details": {
+        "metrics": 180,
+        "logs": 90,
+        "spans": 90
+      }
+    },
+    {
+      "stage": "4_anomaly_detection",
+      "status": "passed",
+      "timestamp": "2026-10-10T13:15:00.983072+00:00",
+      "details": {
+        "anomaly_detected": true,
+        "detector": "threshold"
+      }
+    },
+    {
+      "stage": "5_root_cause_analysis",
+      "status": "passed",
+      "timestamp": "2026-10-10T13:15:01.001120+00:00",
+      "details": {
+        "candidates_found": 1,
+        "leading_candidate": "payment-service"
+      }
+    },
+    {
+      "stage": "6_investigation_completed",
+      "status": "passed",
+      "timestamp": "2026-10-10T13:15:01.043239+00:00",
+      "details": {
+        "investigation_id": "inv-fee242d05411",
+        "status": "COMPLETED",
+        "tool_calls": 6,
+        "is_abstained": false
+      }
+    },
+    {
+      "stage": "7_evidence_grounded",
+      "status": "passed",
+      "timestamp": "2026-10-10T13:15:01.043239+00:00",
+      "details": {
+        "supporting_evidence_citations_count": 5
+      }
+    },
+    {
+      "stage": "8_policy_evaluation",
+      "status": "passed",
+      "timestamp": "2026-10-10T13:15:01.043239+00:00",
+      "details": {
+        "policy_decision": "ALLOW",
+        "reason": "Action conforms to all deterministic safety constraints"
+      }
+    },
+    {
+      "stage": "9_simulation_executed",
+      "status": "passed",
+      "timestamp": "2026-10-10T13:15:01.043239+00:00",
+      "details": {
+        "status": "SIMULATED_SUCCESS",
+        "message": "Simulated action 'restore_service' executed and verified for payment-service."
+      }
+    },
+    {
+      "stage": "10_outcome_verified",
+      "status": "passed",
+      "timestamp": "2026-10-10T13:15:01.043239+00:00",
+      "details": {
+        "experiment_terminated": true
+      }
+    },
+    {
+      "stage": "11_cleanup_complete",
+      "status": "passed",
+      "timestamp": "2026-10-10T13:15:01.045333+00:00",
+      "details": {
+        "cleaned_experiment_id": "exp-1791638100"
+      }
+    }
+  ],
+  "manifest": {
+    "platform_version": "0.1.0-phase6",
+    "environment": "development",
+    "feature_schema_version": "v1.0-standard-15f",
+    "feature_names": [
+      "req_count",
+      "req_rate_per_sec",
+      "error_count",
+      "error_rate",
+      "latency_mean_ms",
+      "latency_median_ms",
+      "latency_p95_ms",
+      "latency_p99_ms",
+      "latency_std_ms",
+      "cpu_utilization_mean",
+      "memory_utilization_mean",
+      "child_span_count",
+      "error_span_count",
+      "missingness_ratio",
+      "freshness_lag_seconds"
+    ],
+    "detector_thresholds": {
+      "cpu_utilization_mean": 0.85,
+      "memory_utilization_mean": 0.9,
+      "error_rate": 0.05,
+      "latency_p95_ms": 1000.0
+    },
+    "rca_algorithm_version": "v1.0-deterministic-temporal-graph",
+    "agent_workflow_version": "v1.0-langgraph-12node",
+    "tool_schema_version": "v1.0-typed-bounded-9tools",
+    "runbook_catalog_version": "v1.0-5runbooks",
+    "evaluation_suite_version": "v1.0-13scenarios",
+    "model_artifacts": {
+      "isolation_forest.joblib": {
+        "artifact_name": "isolation_forest.joblib",
+        "file_path": "ml\\artifacts\\isolation_forest.joblib",
+        "exists": true,
+        "size_bytes": 601896,
+        "sha256_hash": "c446e8eab6ee885a0639dee32aba22332b4328e000c4317a4b3a490963f86620",
+        "last_modified": "2026-10-10T13:04:18.190467+00:00",
+        "compatible": true,
+        "error": null
+      },
+      "incident_predictor.joblib": {
+        "artifact_name": "incident_predictor.joblib",
+        "file_path": "ml\\artifacts\\incident_predictor.joblib",
+        "exists": true,
+        "size_bytes": 115748,
+        "sha256_hash": "b384953b34e14e2e477b66717259143b38c74ca5d9dbffbf59d2dcb2b5bca739",
+        "last_modified": "2026-10-10T13:04:18.695183+00:00",
+        "compatible": true,
+        "error": null
+      }
+    },
+    "generated_at": "2026-10-10T13:15:01.047095+00:00"
+  }
+}

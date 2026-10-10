@@ -1,0 +1,60 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: aegisops-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: aegisops
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d aegisops"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+      start_period: 5s
+    networks:
+      - aegisops-net
+
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: aegisops-backend
+    restart: unless-stopped
+    environment:
+      ENVIRONMENT: development
+      DEBUG: "true"
+      APP_NAME: AegisOps
+      APP_VERSION: 0.1.0
+      HOST: 0.0.0.0
+      PORT: 8000
+      LOG_LEVEL: INFO
+      LOG_FORMAT: json
+      DATABASE_URL: postgresql+psycopg://postgres:postgres@postgres:5432/aegisops
+      SECRET_KEY: change-me-to-a-secure-random-secret-key-at-least-32-chars
+    ports:
+      - "${BACKEND_PORT:-8000}:8000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health/live"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    networks:
+      - aegisops-net
+
+volumes:
+  postgres_data:
+    name: aegisops_postgres_data
+
+networks:
+  aegisops-net:
+    name: aegisops-network

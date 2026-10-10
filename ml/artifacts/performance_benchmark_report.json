@@ -1,0 +1,68 @@
+{
+  "timestamp": "2026-10-10T07:16:53.274978+00:00",
+  "environment": {
+    "os": "Windows-11-10.0.26200-SP0",
+    "python_version": "3.12.10",
+    "processor": "Intel64 Family 6 Model 170 Stepping 4, GenuineIntel"
+  },
+  "benchmarks": [
+    {
+      "workload": "ml_anomaly_inference",
+      "iterations": 100,
+      "throughput_rps": 315258.5,
+      "latency_ms": {
+        "count": 100,
+        "min": 0.0,
+        "avg": 0.0,
+        "p50": 0.0,
+        "p95": 0.0,
+        "p99": 0.0,
+        "max": 0.0
+      }
+    },
+    {
+      "workload": "root_cause_analysis",
+      "iterations": 10,
+      "throughput_rps": 201.4,
+      "latency_ms": {
+        "count": 10,
+        "min": 2.65,
+        "avg": 4.96,
+        "p50": 4.58,
+        "p95": 7.92,
+        "p99": 7.92,
+        "max": 7.92
+      }
+    },
+    {
+      "workload": "investigation_workflow_langgraph",
+      "iterations": 5,
+      "throughput_rps": 86.2,
+      "latency_ms": {
+        "count": 5,
+        "min": 11.01,
+        "avg": 11.6,
+        "p50": 11.77,
+        "p95": 11.9,
+        "p99": 11.9,
+        "max": 11.9
+      }
+    },
+    {
+      "workload": "concurrent_api_health_queries",
+      "iterations": 50,
+      "error_count": 0,
+      "throughput_rps": 118.6,
+      "latency_ms": {
+        "count": 50,
+        "min": 5.58,
+        "avg": 8.43,
+        "p50": 8.4,
+        "p95": 12.23,
+        "p99": 18.22,
+        "max": 18.22
+      }
+    }
+  ],
+  "total_elapsed_seconds": 1.34
+}

@@ -1,0 +1,247 @@
+{
+  "evaluated_at": "2026-10-10T13:04:18.708360+00:00",
+  "protocol": "Chronological holdout with zero future-leakage and embargo exclusion",
+  "metadata": {
+    "dataset_origin": "deterministic_fixture_generator",
+    "data_source_mode": "synthetic",
+    "is_production_validated": false,
+    "production_validation_status": "INCOMPLETE (Trained on synthetic fixtures; not production-validated)",
+    "chronological_split": {
+      "total_samples": 126,
+      "train_samples": 81,
+      "embargo_gap_samples": 13,
+      "test_samples": 32,
+      "train_start": "2026-10-10T00:01:00+00:00",
+      "train_end": "2026-10-10T00:14:20+00:00",
+      "test_start": "2026-10-10T00:16:40+00:00",
+      "test_end": "2026-10-10T00:21:40+00:00"
+    },
+    "record_counts": {
+      "metrics": 3440,
+      "logs": 1560,
+      "spans": 1620,
+      "experiments": 3
+    },
+    "experiment_ids": [
+      "exp-latency-001",
+      "exp-error-002",
+      "exp-timeout-003"
+    ],
+    "evaluation_date": "2026-10-10T13:04:18.708360+00:00"
+  },
+  "anomaly_detectors": {
+    "threshold_baseline": {
+      "detector_name": "ThresholdAnomalyDetector",
+      "n_samples": 32,
+      "exposure_hours": 0.533,
+      "true_positives": 6,
+      "false_positives": 12,
+      "true_negatives": 14,
+      "false_negatives": 0,
+      "precision": 0.3333,
+      "recall": 1.0,
+      "f1_score": 0.5,
+      "pr_auc": 0.3333,
+      "false_alerts_per_hour": 22.5,
+      "missed_incidents": 0,
+      "scenarios": {
+        "service_timeout": {
+          "sample_count": 6,
+          "detected": 6,
+          "recall": 1.0
+        }
+      },
+      "detection_delay": {
+        "total_incidents": 1,
+        "detected_incidents": 1,
+        "missed_incidents": 0,
+        "detection_rate": 1.0,
+        "delays_seconds": [
+          10.0
+        ],
+        "summary": {
+          "mean_seconds": 10.0,
+          "median_seconds": 10.0,
+          "min_seconds": 10.0,
+          "max_seconds": 10.0,
+          "p95_seconds": 10.0,
+          "std_seconds": 0.0
+        },
+        "by_scenario": {
+          "service_timeout": {
+            "total_incidents": 1,
+            "detected_incidents": 1,
+            "missed_incidents": 0,
+            "detection_rate": 1.0,
+            "mean_delay_seconds": 10.0,
+            "median_delay_seconds": 10.0,
+            "delays_seconds": [
+              10.0
+            ]
+          }
+        },
+        "incident_details": [
+          {
+            "incident_id": "exp-timeout-003",
+            "scenario": "service_timeout",
+            "service_name": "payment-service",
+            "start_time": "2026-10-10T00:16:30+00:00",
+            "end_time": "2026-10-10T00:18:30+00:00",
+            "detected": true,
+            "delay_seconds": 10.0,
+            "first_alert_time": "2026-10-10T00:16:40+00:00",
+            "pre_fault_alerts_count": 0,
+            "qualifying_alerts_count": 6
+          }
+        ]
+      }
+    },
+    "rolling_mad_baseline": {
+      "detector_name": "RollingMadAnomalyDetector",
+      "n_samples": 32,
+      "exposure_hours": 0.533,
+      "true_positives": 0,
+      "false_positives": 16,
+      "true_negatives": 10,
+      "false_negatives": 6,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0,
+      "pr_auc": 0.1875,
+      "false_alerts_per_hour": 30.0,
+      "missed_incidents": 6,
+      "scenarios": {
+        "service_timeout": {
+          "sample_count": 6,
+          "detected": 0,
+          "recall": 0.0
+        }
+      },
+      "detection_delay": {
+        "total_incidents": 1,
+        "detected_incidents": 0,
+        "missed_incidents": 1,
+        "detection_rate": 0.0,
+        "delays_seconds": [],
+        "summary": {
+          "mean_seconds": null,
+          "median_seconds": null,
+          "min_seconds": null,
+          "max_seconds": null,
+          "p95_seconds": null,
+          "std_seconds": null
+        },
+        "by_scenario": {
+          "service_timeout": {
+            "total_incidents": 1,
+            "detected_incidents": 0,
+            "missed_incidents": 1,
+            "detection_rate": 0.0,
+            "mean_delay_seconds": null,
+            "median_delay_seconds": null,
+            "delays_seconds": []
+          }
+        },
+        "incident_details": [
+          {
+            "incident_id": "exp-timeout-003",
+            "scenario": "service_timeout",
+            "service_name": "payment-service",
+            "start_time": "2026-10-10T00:16:30+00:00",
+            "end_time": "2026-10-10T00:18:30+00:00",
+            "detected": false,
+            "delay_seconds": null,
+            "first_alert_time": null,
+            "pre_fault_alerts_count": 0,
+            "qualifying_alerts_count": 0
+          }
+        ]
+      }
+    },
+    "isolation_forest": {
+      "detector_name": "isolation_forest",
+      "n_samples": 32,
+      "exposure_hours": 0.533,
+      "true_positives": 6,
+      "false_positives": 12,
+      "true_negatives": 14,
+      "false_negatives": 0,
+      "precision": 0.3333,
+      "recall": 1.0,
+      "f1_score": 0.5,
+      "pr_auc": 0.6667,
+      "false_alerts_per_hour": 22.5,
+      "missed_incidents": 0,
+      "scenarios": {
+        "service_timeout": {
+          "sample_count": 6,
+          "detected": 6,
+          "recall": 1.0
+        }
+      },
+      "detection_delay": {
+        "total_incidents": 1,
+        "detected_incidents": 1,
+        "missed_incidents": 0,
+        "detection_rate": 1.0,
+        "delays_seconds": [
+          10.0
+        ],
+        "summary": {
+          "mean_seconds": 10.0,
+          "median_seconds": 10.0,
+          "min_seconds": 10.0,
+          "max_seconds": 10.0,
+          "p95_seconds": 10.0,
+          "std_seconds": 0.0
+        },
+        "by_scenario": {
+          "service_timeout": {
+            "total_incidents": 1,
+            "detected_incidents": 1,
+            "missed_incidents": 0,
+            "detection_rate": 1.0,
+            "mean_delay_seconds": 10.0,
+            "median_delay_seconds": 10.0,
+            "delays_seconds": [
+              10.0
+            ]
+          }
+        },
+        "incident_details": [
+          {
+            "incident_id": "exp-timeout-003",
+            "scenario": "service_timeout",
+            "service_name": "payment-service",
+            "start_time": "2026-10-10T00:16:30+00:00",
+            "end_time": "2026-10-10T00:18:30+00:00",
+            "detected": true,
+            "delay_seconds": 10.0,
+            "first_alert_time": "2026-10-10T00:16:40+00:00",
+            "pre_fault_alerts_count": 0,
+            "qualifying_alerts_count": 6
+          }
+        ]
+      }
+    }
+  },
+  "incident_prediction": {
+    "model_name": "incident_risk_predictor",
+    "model_version": "v1.0.0",
+    "status": "AVAILABLE",
+    "n_samples": 23,
+    "positive_labels": 0,
+    "embargoed_samples_excluded": 9,
+    "risk_threshold": 0.5,
+    "true_positives": 0,
+    "false_positives": 7,
+    "true_negatives": 16,
+    "false_negatives": 0,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1_score": 0.0,
+    "pr_auc": 0.0,
+    "brier_score": 0.247,
+    "recall_at_top20_percent_alerts": 0.0
+  }
+}

@@ -1,0 +1,115 @@
+{
+  "generated_at": "2026-10-10T10:22:56.330532",
+  "data_source": "synthetic",
+  "total_incidents": 3,
+  "eligible_incidents": 3,
+  "excluded_incidents": 0,
+  "exclusion_reasons": {},
+  "deterministic_ranker_metrics": {
+    "model_name": "Deterministic Multi-Factor Ranker",
+    "total_evaluated": 3,
+    "top1_accuracy": 1.0,
+    "top3_accuracy": 1.0,
+    "mean_reciprocal_rank": 1.0,
+    "abstention_rate": 0.0,
+    "mean_diagnosis_latency_sec": 0.01,
+    "median_diagnosis_latency_sec": 0.01,
+    "scenario_breakdown": {
+      "latency_spike": {
+        "count": 1.0,
+        "top1_accuracy": 1.0,
+        "top3_accuracy": 1.0,
+        "mrr": 1.0
+      },
+      "error_surge": {
+        "count": 1.0,
+        "top1_accuracy": 1.0,
+        "top3_accuracy": 1.0,
+        "mrr": 1.0
+      },
+      "service_timeout": {
+        "count": 1.0,
+        "top1_accuracy": 1.0,
+        "top3_accuracy": 1.0,
+        "mrr": 1.0
+      }
+    },
+    "topology_coverage_breakdown": {
+      "in_topology": {
+        "count": 3.0,
+        "top1_accuracy": 1.0,
+        "top3_accuracy": 1.0,
+        "mrr": 1.0
+      }
+    }
+  },
+  "earliest_anomaly_baseline_metrics": {
+    "model_name": "Earliest Anomaly Baseline",
+    "total_evaluated": 3,
+    "top1_accuracy": 0.0,
+    "top3_accuracy": 1.0,
+    "mean_reciprocal_rank": 0.5,
+    "abstention_rate": 0.0,
+    "scenario_breakdown": {
+      "latency_spike": {
+        "count": 1.0,
+        "top1_accuracy": 0.0,
+        "top3_accuracy": 1.0,
+        "mrr": 0.5
+      },
+      "error_surge": {
+        "count": 1.0,
+        "top1_accuracy": 0.0,
+        "top3_accuracy": 1.0,
+        "mrr": 0.5
+      },
+      "service_timeout": {
+        "count": 1.0,
+        "top1_accuracy": 0.0,
+        "top3_accuracy": 1.0,
+        "mrr": 0.5
+      }
+    }
+  },
+  "detailed_incident_results": [
+    {
+      "incident_id": "bench-inc-latency_spike",
+      "scenario": "latency_spike",
+      "ground_truth_service": "payment-service",
+      "in_topology": true,
+      "deterministic_top1": "payment-service",
+      "deterministic_rank": 1,
+      "deterministic_hit_top1": true,
+      "deterministic_hit_top3": true,
+      "baseline_top1": "order-service",
+      "baseline_rank": 2,
+      "baseline_hit_top1": false
+    },
+    {
+      "incident_id": "bench-inc-error_surge",
+      "scenario": "error_surge",
+      "ground_truth_service": "payment-service",
+      "in_topology": true,
+      "deterministic_top1": "payment-service",
+      "deterministic_rank": 1,
+      "deterministic_hit_top1": true,
+      "deterministic_hit_top3": true,
+      "baseline_top1": "order-service",
+      "baseline_rank": 2,
+      "baseline_hit_top1": false
+    },
+    {
+      "incident_id": "bench-inc-service_timeout",
+      "scenario": "service_timeout",
+      "ground_truth_service": "payment-service",
+      "in_topology": true,
+      "deterministic_top1": "payment-service",
+      "deterministic_rank": 1,
+      "deterministic_hit_top1": true,
+      "deterministic_hit_top3": true,
+      "baseline_top1": "order-service",
+      "baseline_rank": 2,
+      "baseline_hit_top1": false
+    }
+  ]
+}
